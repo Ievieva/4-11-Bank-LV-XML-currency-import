@@ -46,8 +46,6 @@ $service->elementMap = [
 
 $result = ($service->parse($xml))[1]['value'];
 
-//var_dump($result['0']['ID']);die();
-
 foreach ($result as $currency) {
     CurrencyController::add($currency['ID'], $currency['Rate']);
 }
