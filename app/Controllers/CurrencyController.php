@@ -60,8 +60,7 @@ class CurrencyController
 
     public static function update(string $id, string $rate)
     {
-        $currency = self::getById($id);
-        if ($currency['rate'] !== $rate) {
+        if (self::getById($id)->rate() !== $rate) {
             query()->update('currency')
                 ->set('rate', ':rate')
                 ->setParameter('rate', $rate)
