@@ -48,6 +48,7 @@ $result = ($service->parse($xml))[1]['value'];
 
 foreach ($result as $currency) {
     CurrencyController::add($currency['ID'], $currency['Rate']);
+    CurrencyController::update($currency['ID'], $currency['Rate']);
 }
 
 $currencyRates = CurrencyController::index();
@@ -55,8 +56,8 @@ $currencyRates = CurrencyController::index();
 foreach ($currencyRates as $currency) : ?>
 
     <p>
-        <strong><?php echo $currency->id(); ?></strong>
-        <?php echo $currency->rate(); ?>
+        <span style="display: inline-block; width: 100px;"><strong><?php echo $currency->id(); ?></strong></span>
+        <span style="display: inline-block; width: 100px;"><?php echo $currency->rate(); ?></span>
     </p>
 
 <?php endforeach; ?>
