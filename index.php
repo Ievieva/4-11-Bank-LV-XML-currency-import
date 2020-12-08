@@ -2,7 +2,7 @@
 
 require_once 'vendor/autoload.php';
 
-use App\Controllers\CurrencyController;
+use App\Services\CurrencyService;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Query\QueryBuilder;
@@ -46,12 +46,7 @@ $service->elementMap = [
 
 $result = ($service->parse($xml))[1]['value'];
 
-foreach ($result as $currency) {
-    CurrencyController::add($currency['ID'], $currency['Rate']);
-    CurrencyController::update($currency['ID'], $currency['Rate']);
-}
-
-$currencyRates = CurrencyController::index();
+$currencyRates = (new CurrencyService())->getData($result);
 
 foreach ($currencyRates as $currency) : ?>
 
