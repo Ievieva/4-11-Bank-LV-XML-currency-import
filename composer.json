@@ -1,0 +1,16 @@
+{
+  "minimum-stability": "stable",
+
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+
+  "require": {
+    "sabre/xml": "^2.2",
+    "doctrine/dbal": "^2.12",
+    "vlucas/phpdotenv": "^5.2",
+    "nikic/fast-route": "^1.3"
+  }
+}
